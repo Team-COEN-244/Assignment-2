@@ -3,19 +3,15 @@
 
 using namespace std;
 
-class CheckingAccount : public Account // creating a checking account, derived from Account class
+SavingsAccount : SavingsAccount (double balance, double rate)// creating a checking account, derived from Account class
 {
-    public:
-    
-    CheckingAccount(doucle balance, doucle tax); // constructor
+    Account(balance) = balnce;
+    this-> rate = rate;
+}
 
-    void credit(double amount);
-    
-    void debit(double amount);
-
-    private:
-
-    double tax;
-};
+calculateInterest()
+{
+    if (
+}
 
 #endif
