@@ -5,14 +5,13 @@ class Account // Account class definition
 {
     private:
 
-    double balance; //  declaring variable
+    double balance; //  Declaring variable
 
     public: 
-    Account (double balance); //constructor
-    double getBalance(); 
-    void credit (double amount); //Declaring credit function
-    void debit  (double amount); //Declaring debit function
-    double getBalance();
+    Account (double balance); // Constructor
+    double getBalance(); // Print the current balance
+    void credit (double amount); // Declaring credit function
+    void debit  (double amount); // Declaring debit function
 }
 
 #endif
