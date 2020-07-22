@@ -3,26 +3,33 @@
 
 using namespace std;
 
+
 Account::Account(double balance)
 {
-    if(balance > 0.0)
+    if(balance >= 0.0)
     {
         this->balance = balance; // assigning local variable value to the data member
     }
     else
     {
-        this->balance = 0.0
-        cout << "Error : No balance" << endl;
+        this->balance = 0.0;
+        cout << "Error : The initial balance was invalid. Current balance to 0.0" << endl;
     }
 }
+
+
 double Account::getBalance()
 {
     return this->balance; //chain function calls 
 }
+
+
 void Account::credit(double amount)
 {
     balance += amount;
 }
+
+
 void Account::debit(double amount)
 {
     if (balance >= amount)
@@ -31,7 +38,7 @@ void Account::debit(double amount)
     }
     else
     {
-        cout << " The debit amount does not exceed the account balance." << endl;
+        cout << "Debit amount exceeded account balance." << endl;
     }
     
 }
