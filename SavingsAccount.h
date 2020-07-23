@@ -6,11 +6,9 @@ class SavingsAccount : public Account // SavingsAccount class definition
 {
     double rate; // Declaring member rate correspoding to the interest rate
 
-    public:
+public:
 
-    SavingsAccount(); // Default constructor
-    void setSavingsAccount(double balance, double rate); // Constructor with known variabes
+    SavingsAccount(double&, double&); // Constructor with known variabes
     double calculateInterest(); // Calculate the interest of the Account
-    ~SavingsAccount(); // Default destructor
 };
 #endif
