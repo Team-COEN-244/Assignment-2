@@ -9,7 +9,7 @@ class CheckingAccount : public Account
     public: 
     
     CheckingAccount(); // Default construcot
-    CheckingAccount (double balance, double tax); // Constructor
+    void setCheckingAccount (double balance, double tax); // Constructor
     void credit (double amount);
     double debit (double amount);
     ~CheckingAccount(); // Default destructor
