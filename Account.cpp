@@ -8,22 +8,24 @@ Account::Account()
     balance = 0.0;
 }
 
-Account::Account(double balance)
+int Account::setAccount(double balance_)
 {
-    if(balance >= 0.0)
+    if (balance_ >= 0.0)
     {
-        this->balance = balance; // Assigning local variable value to the data member
+        balance = balance_; // Assigning local variable value to the data member
+        return balance;
     }
     else
     {
-        this->balance = 0.0; // Error message when the balance is negative
+        balance = 0.0; // Error message when the balance is negative
         cout << "Error : The initial balance was invalid. Current balance to 0.0" << endl; 
+        return balance;
     }
 }
 
 double Account::getBalance()
 {
-    return this->balance; // Chain function calls 
+    return balance; // Chain function calls 
 }
 
 void Account::credit(double amount)
@@ -40,7 +42,7 @@ bool Account::debit(double amount)
     }
     else
     { // Error message because there is not enough money
-        cout << "Debit's amount exceeds account's balance." << endl; 
+        cout << "Debit's amount exceeds account's balance. The balance has not been changed" << endl; 
         return false;
     }
     
