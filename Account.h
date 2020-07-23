@@ -10,7 +10,7 @@ protected:
 public:
     
     Account(); // Default constructor
-    Account(double balance); // Constructor
+    int setAccount(double balance); // Constructor with known variables
     double getBalance(); // Print the current balance
     void credit(double amount); // Declaring credit function
     bool debit(double amount); // Declaring debit function
