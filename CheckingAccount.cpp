@@ -3,35 +3,29 @@
 
 using namespace std;
 
-CheckingAccount::CheckingAccount()
-{
-    tax = 0;
-}
 
-void CheckingAccount::setCheckingAccount (double balance_, double tax_) // Creating a Checking account, derived from Account class
+CheckingAccount::CheckingAccount(double& balance_, double& tax_) :Account(balance_)// Creating a Checking account, derived from Account class
 {
-    Account::setAccount(balance_); // set the new balance with the constructor
+    balance = balance_; // set the new balance with the constructor
     tax = tax_;
 }
 
-void CheckingAccount::credit(double amount) // Crediting an amount deducting the taxes
+void CheckingAccount::credit(double& amount) // Crediting an amount deducting the taxes
 {
-    Account::credit(amount - tax);
+    amount -= tax;
+    Account::credit(amount);
 }
 
-double CheckingAccount::debit(double amount) // Debiting the amount with taxes if it is possible
+bool CheckingAccount::debit(double& amount) // Debiting the amount with taxes if it is possible
 {
     amount += tax;
-    if (Account::debit(amount + tax)) // Verifying if there are enough money in the Account
+    if (Account::debit(amount)) // Verifying if there are enough money in the Account
     {
-        return balance;
+        return true;
     }
     else // There are not enough money in the Account
     {
-        Account::debit(amount + tax);
-        return balance;
+        Account::debit(amount);
+        return false;
     }
 }
-
-CheckingAccount::~CheckingAccount()
-{}
