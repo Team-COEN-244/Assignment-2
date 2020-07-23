@@ -4,15 +4,15 @@
 
 class CheckingAccount : public Account
 {
+    double tax;
+
     public: 
     
-    CheckingAccount (double balance, double tax);
+    CheckingAccount(); // Default construcot
+    CheckingAccount (double balance, double tax); // Constructor
     void credit (double amount);
-    void debit (double amount);
-
-    private: 
-
-    double tax;
+    double debit (double amount);
+    ~CheckingAccount(); // Default destructor
 };
 
 #endif
