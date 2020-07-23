@@ -8,13 +8,11 @@ protected:
     double balance; //  Declaring variable
 
 public:
-    
-    Account(); // Default constructor
-    int setAccount(double balance); // Constructor with known variables
+
+    Account(double& ); // Constructor with known variables
     double getBalance(); // Print the current balance
-    void credit(double amount); // Declaring credit function
-    bool debit(double amount); // Declaring debit function
-    ~Account(); // Default destructor
+    virtual void credit(double&); // Declaring credit function
+    virtual bool debit(double&); // Declaring debit function
 };
 
 #endif
