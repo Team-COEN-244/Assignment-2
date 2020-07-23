@@ -2,14 +2,15 @@
 #define SavingAccount_H
 #include "Account.h" //include definition of class Account from Account.h
 
-class SavingsAccount : publi Account // SavingsAccount class definition
+class SavingsAccount : public Account // SavingsAccount class definition
 {
-    private:
-    double rate;
+    double rate; // Declaring member rate correspoding to the interest rate
 
     public:
-    SavingsAccount(double balance, double rate); //constructor 
-    double calculateInterest();
+
+    SavingsAccount(); // Default constructor
+    SavingsAccount(double balance, double rate); // Constructor 
+    double calculateInterest(); // Calculate the interest of the Account
+    ~SavingsAccount(); // Default destructor
 };
 #endif
-
