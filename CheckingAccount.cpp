@@ -3,7 +3,12 @@
 
 using namespace std;
 
-CheckingAccount::CheckingAccount (double balance, double tax):Account (balance)
+CheckingAccount::CheckingAccount()
+{
+    tax = 0;
+}
+
+CheckingAccount::CheckingAccount (double balance, double tax) : Account(balance)
 {
     this->tax = tax;
 }
@@ -13,16 +18,19 @@ void CheckingAccount::credit(double amount)
     Account::credit(amount - tax);
 }
 
-void CheckingAccount::debit(double amount)
+double CheckingAccount::debit(double amount)
 {
-    double amount = (amount + tax);
-    if (getBalance() < amount)
+    amount += tax;
+    if (Account::debit(amount + tax))
     {
-        cout << "The debit amount does not exceed the account balance." << endl;
+        return balance;
     }
     else
     {
-        Account::debit(amount);
-
+        Account::debit(amount + tax);
+        return balance;
     }
 }
+
+CheckingAccount::~CheckingAccount()
+{}
