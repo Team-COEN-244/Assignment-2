@@ -6,13 +6,11 @@ class CheckingAccount : public Account
 {
     double tax;
 
-    public: 
-    
-    CheckingAccount(); // Default construcot
-    void setCheckingAccount (double balance, double tax); // Constructor
-    void credit (double amount);
-    double debit (double amount);
-    ~CheckingAccount(); // Default destructor
+public:
+
+    CheckingAccount(double&, double&); // Constructor
+    virtual void credit(double&);
+    virtual bool debit(double&);
 };
 
 #endif
