@@ -3,15 +3,22 @@
 
 using namespace std;
 
-SavingsAccount : SavingsAccount (double balance, double rate)// creating a checking account, derived from Account class
+SavingsAccount::SavingsAccount()
 {
-    Account(balance) = balnce;
-    this-> rate = rate;
+    rate = 0.0;
 }
 
-calculateInterest()
+SavingsAccount::SavingsAccount(double balance, double rate_ ) : Account(balance) // creating a checking account, derived from Account class
 {
-    if (
+    this->rate = rate_; // Assigns the local value for rate to the data member
 }
 
-#endif
+double SavingsAccount :: calculateInterest()
+{
+    double interest; // Creating a double variable
+    interest = balance * rate; // Calulate the interest in this account de
+    return interest;
+}
+
+SavingsAccount::~SavingsAccount() // Destructor
+{}
