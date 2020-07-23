@@ -4,6 +4,7 @@
 
 using namespace std;
 void transaction(CheckingAccount&, double&);
+void transaction(Account& account, double& amount);
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
 	cin >> money;
 	Account* account = new Account(money);
 	cout << "\nThen your initial account's balance is: $" << account->getBalance() << endl;
-	transaction(dynamic_cast <CheckingAccount*>(account), amount);
+	transaction(*account, amount);
 	money = amount;
 	cout << "\nI will now calculate the interests of a saving's account for you, depending on the rate of your bank." << endl
 	<< "What is the current interest rate (in %) of your bank ?" << endl;
@@ -34,6 +35,43 @@ int main()
 }
 
 void transaction(CheckingAccount& account, double& amount)
+{
+	string input;
+
+	cout << "\nIf you want to make a debit or a credit in your account, please enter 'credit' or 'debit." << endl
+		<< "If you don't want to make any transactions at all, please enter 'stop'.\n";
+	cin >> input;
+	do
+	{
+		if (input == "credit")
+		{
+			cout << "Ok, then enter the amount I have to credit in your account.\n";
+			cin >> amount;
+			account.credit(amount);
+			cout << "The new balance in your account is: $" << account.getBalance() << endl;
+			cout << "\nDo you want to make an other transaction ?\nPlease enter credit, debit, or write stop to finish all the transactions.\n";
+			cin >> input;
+		}
+		else if (input == "debit")
+		{
+			cout << "Ok, then enter the amount I have to debit from your account.\n";
+			cin >> amount;
+			account.debit(amount);
+			cout << "The new balance in your account is: $" << account.getBalance() << endl;
+			cout << "Do you want to make an other transaction ?\nPlease enter credit, debit, or write stop to finish all the transactions.\n";
+			cin >> input;
+		}
+		else if (input != "stop")
+		{
+			cout << "I don't understand what you wrote, please enter either debit, credit or stop to let me know what to do.\n";
+			cin >> input;
+		}
+	} while (input != "stop");
+	amount = account.getBalance();
+}
+
+
+void transaction(Account& account, double& amount)
 {
 	string input;
 
