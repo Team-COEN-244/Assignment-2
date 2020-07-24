@@ -8,7 +8,7 @@ Environment : Visual Studio 2019 */
 #include "CheckingAccount.h"
 
 using namespace std;
-void transaction(CheckingAccount&, double&);
+void transaction(Account&, double&);
 
 int main()
 {
@@ -17,30 +17,29 @@ int main()
 		<< "\nI am creating an account or you.\nHow much money do you have in your account ?" << endl;
 	cin >> money;
 	Account* account = new Account(money);
-	CheckingAccount* virtual_account = new CheckingAccount(money, tax);
-	account = virtual_account;
 	cout << "\nThen your initial account's balance is: $" << account->getBalance() << endl;
-	transaction(*virtual_account, amount);
+	transaction(*account, amount);
 	money = amount;
 	cout << "\nI will now calculate the interests of a saving's account for you, depending on the rate of your bank." << endl
 		<< "What is the current interest rate (in %) of your bank ?" << endl;
 	cin >> rate;
-	SavingsAccount savings_account(money, rate);
-	cout << "\nThe balance of your account is still $" << savings_account.getBalance() << endl;
-	cout << "The interests of the saving's account you have is$ " << savings_account.calculateInterest();
+	SavingsAccount* savings_account = new SavingsAccount(money, rate);
+	cout << "\nThe balance of your account is still $" << savings_account->getBalance() << endl;
+	cout << "The interests of the saving's account you have is$ " << savings_account->calculateInterest();
 
 	cout << "\n\nI will now create an other account for you."
 		<< "\nThis account has fees per transaction. "
 		<< "I will calculate everything for you, don't worry." << endl
 		<< "Please enter the amount (in $) of the taxes the banks takes from your account." << endl;
 	cin >> tax;
-	CheckingAccount checking_account(money, tax);
-	cout << "\nThe intial balance of the Cheking account is$ " << checking_account.getBalance() << endl;
-	transaction(checking_account, amount);
+	CheckingAccount* checking_account = new CheckingAccount(money, tax);
+	cout << "\nThe intial balance of the Cheking account is$ " << checking_account->getBalance() << endl;
+	transaction(*checking_account, amount);
+
 	return 0;
 }
 
-void transaction(CheckingAccount& account, double& amount)
+void transaction(Account& account, double& amount)
 {
 	string input;
 
