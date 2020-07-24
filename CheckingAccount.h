@@ -9,8 +9,8 @@ class CheckingAccount : public Account
 public:
 
     CheckingAccount(double&, double&); // Constructor
-    virtual void credit(double&);
-    virtual bool debit(double&);
+    virtual void credit(double&) override;
+    virtual bool debit(double&) override;
 };
 
 #endif
